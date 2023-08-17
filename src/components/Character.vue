@@ -119,6 +119,9 @@
   padding: 0px 15px 0px 15px;
   
   min-height: 900px;/*Footer blocks starship details if not set*/
+  
+   background-color: #19181E;
+    background-image: linear-gradient(#5634A300,#702AEAFF);
 
 }
 
