@@ -12,6 +12,11 @@ const routes = [
       path: '/character/:id',
       name: 'character',
       component: CharacterView
+  },
+  {
+      path: '/character',
+      name: 'List',
+      component: HomeView
   }
   
 ]

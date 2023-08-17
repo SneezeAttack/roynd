@@ -11,7 +11,7 @@
   
   
   <div class="details">
-  <h3>Planet</h3>
+    <h3>Planet</h3>
 
     <div>
       <p class="left">Home planet:</p> <p class="right">{{planet.name}}</p>
@@ -42,14 +42,14 @@
 
       <div class="clear"></div>
 
-
-
+      
       <div>
         <p class="left">Model:</p>
         <p class="right">{{ship.model}}</p>
       </div>
       <div class="clear"></div>
 
+      
       <div>
         <p class="left">Manufacturer:</p>
         <p class="right">{{ship.manufacturer}}</p>
@@ -58,6 +58,8 @@
       <hr />
     </div>
     </div>
+    
+    
     <div v-else style="text-align: center">
 
       <h3>No starships on record</h3>
@@ -70,58 +72,44 @@
 
 <script>
   export default {
-  data() {
-  return {
-  person: [],
-  planet: [],
-  starships: [],
-  id: this.$route.params.id,
-
-
-  }
-  },
+    data() {
+      return {
+        person: [],
+        planet: [],
+        starships: [],
+        id: this.$route.params.id,
+      }
+    },
   computed: {},
   methods: {
 
-  getData: function(p){
+    getData: function(p){
 
-  console.log("getData")
+    fetch(p.homeworld + '?format=json')
+    .then(res => res.json())
+    .then(data => this.planet = data)
+    .catch(err => console.log(err.message))
 
-  fetch(p.homeworld + '?format=json')
-  .then(res => res.json())
-  .then(data => this.planet = data)
-  .catch(err => console.log(err.message))
-
-  /*console.log(p.starships[0])*/
-
-  for(let i = 0; i < p.starships.length; i++){
-  fetch(p.starships[i] + '?format=json')
-  .then(res => res.json())
-  .then(data => {this.starships.push(data); console.log(data)})
-  .catch(err => console.log(err.message))
-  }
-
-
+  
+    for(let i = 0; i < p.starships.length; i++){
+      fetch(p.starships[i] + '?format=json')
+      .then(res => res.json())
+      .then(data => {this.starships.push(data); console.log(data)})
+      .catch(err => console.log(err.message))
+    }
   }
 
 
   },
 
   mounted() {
-  fetch('https://swapi.dev/api/people/'+this.id+'?format=json')
-  .then(res => res.json())
-  .then(data => {this.person = data; this.getData(this.person)})
-  .catch(err => console.log(err.message))
-  /*
-
-
-  fetch(this.links[2][0] + '?format=json')
-  .then(res => res.json())
-  .then(data => this.starship = data)
-  .catch(err => console.log(err.message))
-  */
+    fetch('https://swapi.dev/api/people/'+this.id+'?format=json')
+    .then(res => res.json())
+    .then(data => {this.person = data; this.getData(this.person)})
+    .catch(err => console.log(err.message))
+    
   }
-  }
+}
 </script>
 
 <style scoped>
