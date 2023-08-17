@@ -24,41 +24,42 @@ export default {}
 
   .footer{
 
-  position: fixed;
-  bottom: 0px;
-  height: 150px;
-  width: 100%;
-  background-color: ##1D1B2B;
-  margin: 0px 0px;
-  text-align: center;
-  padding: 0px 0px;
-  margin: 0;
+    position: fixed;
+    bottom: 0px;
+    height: 150px;
+    width: 100%;
+    background-color: ##1D1B2B;
+    margin: 0px 0px;
+    text-align: center;
+    padding: 0px 0px;
+    margin: 0;
+    
   }
 
   .footer span{
 
-  float:left;
-  display:block;
-  width: 33.3%;
-  height: 150px;
-  margin: 0px 0px;
-  border: 0px solid white;
-  background-color: #1D1B2B;
+    float:left;
+    display:block;
+    width: 33.3%;
+    height: 150px;
+    margin: 0px 0px;
+    border: 0px solid white;
+    background-color: #1D1B2B;
 
   }
 
   .footer span img{
 
-  display:block;
+    display:block;
 
-  padding: 60px 0px 15px 55px;
+    padding: 60px 0px 15px 55px;
 
   }
 
   a{
 
-  text-decoration: none;
-  color: white;
+    text-decoration: none;
+    color: white;
 
   }
 </style>

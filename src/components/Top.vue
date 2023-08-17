@@ -19,17 +19,18 @@ export default {}
 
   .background{
 
-  background-color: #19181E;
+    background-color: #19181E;
   
-  font-size: 16px;
-  font-family: Montserrat;
-  padding-bottom: 10px;
+    font-size: 16px;
+    font-family: Montserrat;
+    padding-bottom: 10px;
   }
 
   .back{
 
-  padding: 15px 0px 0px 30px;
-  height: 46px;
+    padding: 15px 0px 0px 30px;
+    height: 46px;
+    
   }
   
  
