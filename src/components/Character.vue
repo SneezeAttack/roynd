@@ -71,30 +71,33 @@
 </template>
 
 <script>
+
+  import axios from 'axios'
+
+
   export default {
-    data() {
-      return {
-        person: [],
-        planet: [],
-        starships: [],
-        id: this.$route.params.id,
-      }
-    },
+  data() {
+  return {
+  person: [],
+  planet: [],
+  starships: [],
+  id: this.$route.params.id,
+  }
+  },
   computed: {},
   methods: {
 
-    getData: function(p){
-
-    fetch(p.homeworld + '?format=json')
-    .then(res => res.json())
-    .then(data => this.planet = data)
-    .catch(err => console.log(err.message))
+  getData: function(p){
 
   
-    for(let i = 0; i < p.starships.length; i++){
-      fetch(p.starships[i] + '?format=json')
-      .then(res => res.json())
-      .then(data => {this.starships.push(data); console.log(data)})
+  axios.get(p.homeworld + '?format=json')
+  .then(data => this.planet = data.data)
+  .catch(err => console.log(err.message))
+
+
+  for(let i = 0; i < p.starships.length; i++){
+      axios.get(p.starships[i] + '?format=json')
+      .then(data => {this.starships.push(data.data)})
       .catch(err => console.log(err.message))
     }
   }
@@ -103,10 +106,10 @@
   },
 
   mounted() {
-    fetch('https://swapi.dev/api/people/'+this.id+'?format=json')
-    .then(res => res.json())
-    .then(data => {this.person = data; this.getData(this.person)})
-    .catch(err => console.log(err.message))
+  
+    axios.get('https://swapi.dev/api/people/'+this.id+'?format=json')
+    .then(data => {this.person = data.data; this.getData(data.data)})
+    .catch(err => console.log(err))
     
   }
 }

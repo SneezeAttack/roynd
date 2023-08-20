@@ -18,21 +18,22 @@
 
 <script>
 
+  import axios from 'axios'
 
-export default {
-	data() {
-		return {
-			data: []
-		}
-	},
-	mounted() {
-		fetch('https://swapi.dev/api/people/?format=json')
-		.then(res => res.json())
-		.then(data => this.data = data)
-		.catch(err => console.log(err.message))
-	}
-	
-}
+  export default {
+  data() {
+  return {
+  data: []
+  }
+  },
+  mounted() {
+
+  axios.get('https://swapi.dev/api/people/?format=json')
+  .then(data => this.data = data.data)
+  .catch(err => console.log(err))
+
+  }
+  }
 </script>
 
 <style scoped>
